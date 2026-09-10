@@ -1,0 +1,241 @@
+:root{
+  --bg:#f4f5f7;
+  --card:#ffffff;
+  --line:#e8e8ed;
+  --line-soft:#f1f1f4;
+  --text:#1b1b1f;
+  --sub:#8a8a92;
+  --hint:#b0b0b8;
+  --brand:#2f6fed;
+  --expense:#e0524a;
+  --income:#1f9d63;
+  --transfer:#3a7bd5;
+  --danger:#d93025;
+  --warn:#dd8b1a;
+  --ok:#1d9e75;
+  --radius:14px;
+  --tab-h:58px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font:15px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:none;
+}
+#app{max-width:520px;margin:0 auto;position:relative;padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom) + 8px)}
+#screen{min-height:100vh}
+
+.card{background:var(--card);border-radius:var(--radius);padding:14px;margin:10px 12px}
+.card.tight{padding:0;overflow:hidden}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.grow{flex:1;min-width:0}
+.muted{color:var(--sub)}
+.small{font-size:13px}
+.tiny{font-size:12px}
+.center{text-align:center}
+.mono-num{font-variant-numeric:tabular-nums}
+
+.page-title{font-size:20px;font-weight:600;padding:14px 16px 4px;margin:0}
+.page-sub{font-size:13px;color:var(--sub);padding:0 16px 8px}
+
+header.bar{
+  padding:calc(env(safe-area-inset-top) + 10px) 16px 8px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  background:var(--bg);
+  position:sticky;top:0;z-index:20;
+}
+header.bar h1{font-size:20px;font-weight:600;margin:0}
+
+.btn{
+  border:0.5px solid var(--line);background:#fff;color:var(--text);
+  border-radius:10px;padding:9px 14px;font-size:14px;font-family:inherit;cursor:pointer;
+}
+.btn:active{background:#f0f0f3}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.primary:active{background:#2559c9}
+.btn.danger{color:var(--danger);border-color:#f3cfcb}
+.btn.block{display:block;width:100%}
+.btn.lg{padding:13px 16px;font-size:15px}
+
+input[type=text],input[type=number],input[type=date],input[type=password],select,textarea{
+  font-family:inherit;font-size:15px;color:var(--text);
+  border:0.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;width:100%;
+}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(47,111,237,.25);outline-offset:-1px}
+
+.seg{display:flex;background:#ebebf0;border-radius:10px;padding:3px;gap:2px}
+.seg button{
+  flex:1;border:0;background:transparent;font-family:inherit;font-size:14px;color:var(--sub);
+  padding:8px 4px;border-radius:8px;cursor:pointer;
+}
+.seg button.on{background:#fff;color:var(--text);font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;border:0.5px solid var(--line);background:#fff;border-radius:999px;
+  padding:7px 13px;font-size:13px;cursor:pointer;white-space:nowrap;
+}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+
+.grid-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cat{
+  border:0.5px solid var(--line);background:#fff;border-radius:12px;
+  padding:10px 4px;text-align:center;cursor:pointer;
+}
+.cat.on{border-color:var(--brand);background:#eef3ff}
+.cat .ic{font-size:22px;line-height:1.2}
+.cat .nm{font-size:12px;color:var(--sub);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat.on .nm{color:var(--brand)}
+
+.amt-out{font-size:34px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.amt-out .cur{font-size:20px;font-weight:500;color:var(--sub);margin-right:4px}
+.amt-out.exp{color:var(--expense)}
+.amt-out.inc{color:var(--income)}
+.amt-out.tf{color:var(--transfer)}
+
+.keypad{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 12px calc(env(safe-area-inset-bottom) + 8px)}
+.keypad button{
+  border:0;background:#fff;border-radius:12px;font-family:inherit;font-size:22px;
+  padding:14px 0;cursor:pointer;font-variant-numeric:tabular-nums;box-shadow:0 1px 0 rgba(0,0,0,.03);
+}
+.keypad button:active{background:#e9e9ee}
+.keypad button.fn{font-size:15px;color:var(--sub)}
+.keypad button.ok{background:var(--brand);color:#fff;font-size:16px;font-weight:500}
+
+.list-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:0.5px solid var(--line-soft)}
+.list-item:last-child{border-bottom:0}
+.day-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:12px 14px 6px;font-size:12px;color:var(--sub);background:var(--bg);border-bottom:0.5px solid var(--line-soft);
+}
+.ic-box{width:36px;height:36px;border-radius:10px;background:#f0f1f5;display:flex;align-items:center;justify-content:center;font-size:19px;flex:0 0 auto}
+
+.amount-e{color:var(--expense);font-weight:600;font-variant-numeric:tabular-nums}
+.amount-i{color:var(--income);font-weight:600;font-variant-numeric:tabular-nums}
+.amount-t{color:var(--transfer);font-weight:500;font-variant-numeric:tabular-nums}
+
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 12px}
+.stat{background:#fff;border-radius:var(--radius);padding:12px}
+.stat .lb{font-size:12px;color:var(--sub)}
+.stat .vl{font-size:19px;font-weight:600;margin-top:2px;font-variant-numeric:tabular-nums}
+
+.progress{height:8px;border-radius:4px;background:#ececf1;overflow:hidden;margin-top:8px}
+.progress > i{display:block;height:100%;background:var(--ok);border-radius:4px}
+.progress.over > i{background:var(--danger)}
+.progress.warn > i{background:var(--warn)}
+
+#tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(12px);border-top:0.5px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#tabbar .inner{max-width:520px;margin:0 auto;display:flex;height:var(--tab-h)}
+#tabbar a{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  text-decoration:none;color:var(--hint);font-size:11px;cursor:pointer;
+}
+#tabbar a .ti{font-size:20px;line-height:1}
+#tabbar a.on{color:var(--brand)}
+
+#toast{
+  position:fixed;left:50%;bottom:calc(var(--tab-h) + 24px);transform:translateX(-50%);
+  background:rgba(20,20,24,.9);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;
+  opacity:0;pointer-events:none;transition:opacity .2s;z-index:200;max-width:80%;text-align:center;
+}
+#toast.on{opacity:1}
+
+#sheet-root:empty{display:none}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.sheet{
+  background:var(--card);width:100%;max-width:520px;border-radius:18px 18px 0 0;
+  max-height:88vh;overflow-y:auto;padding:6px 0 calc(env(safe-area-inset-bottom) + 14px);
+  animation:up .18s ease-out;
+}
+@keyframes up{from{transform:translateY(12px);opacity:.4}to{transform:none;opacity:1}}
+.sheet-head{padding:8px 16px 10px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--line-soft)}
+.sheet-head h3{margin:0;font-size:16px;font-weight:600}
+
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;background:#f0f1f5;color:var(--sub)}
+.badge.ok{background:#e3f4ee;color:#0f6e56}
+.badge.warn{background:#fdf1dd;color:#854f0b}
+.badge.danger{background:#fbe4e2;color:#a32d2d}
+
+.meter-line{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:0.5px solid var(--line-soft)}
+.meter-line:last-child{border-bottom:0}
+.meter-line .nm{width:74px;flex:0 0 auto;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meter-line .bar{flex:1}
+.meter-line .vl{width:96px;text-align:right;font-size:12px;font-variant-numeric:tabular-nums;flex:0 0 auto}
+
+pre.report{
+  background:#f6f7f9;border:0.5px solid var(--line);border-radius:10px;padding:10px;
+  font-size:11px;line-height:1.5;overflow-x:auto;white-space:pre-wrap;word-break:break-all;max-height:240px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.empty{padding:48px 20px;text-align:center;color:var(--hint);font-size:14px}
+.divider{height:8px}
+
+/* ---------- 视图容器 / 错误页 ---------- */
+.view{min-height:100vh}
+.errbox{
+  margin:0;padding:10px 12px;background:#f8f8fa;border:0.5px solid var(--line);
+  border-radius:10px;font-size:11px;line-height:1.55;color:var(--sub);
+  max-height:220px;overflow:auto;white-space:pre-wrap;word-break:break-all;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.date-in{border:0;background:transparent;font-size:14px;font-family:inherit;padding:0;color:var(--text)}
+
+/* ---------- 应用锁 ---------- */
+.lock-screen{
+  position:fixed;inset:0;z-index:300;background:var(--bg);
+  display:flex;align-items:flex-start;justify-content:center;
+}
+.lock-wrap{width:100%;max-width:520px;padding:0 24px;text-align:center}
+.lock-title{font-size:17px;font-weight:600;margin-top:80px}
+.lock-dots{display:flex;gap:14px;justify-content:center;margin:22px 0 8px}
+.lock-dots i{width:12px;height:12px;border-radius:50%;background:var(--line);display:block}
+.lock-dots i.on{background:var(--brand)}
+.lock-msg{font-size:13px;color:var(--danger);min-height:22px;line-height:1.5}
+.lock-pad{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  max-width:320px;margin:16px auto 0;
+}
+.lock-pad button{
+  border:0;background:#fff;border-radius:12px;font-family:inherit;font-size:22px;
+  padding:16px 0;cursor:pointer;font-variant-numeric:tabular-nums;
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
+}
+.lock-pad button:active{background:#e9e9ee}
+.lock-pad button.fn{font-size:15px;color:var(--sub)}
+.lock-forgot{
+  margin-top:24px;background:none;border:0;color:var(--sub);
+  font-size:13px;font-family:inherit;text-decoration:underline;cursor:pointer;
+}
+
+/* ---------- 记账页：金额 + 键盘成一组，随页面滚动（放在页面最末尾） ---------- */
+.record-dock{
+  margin:10px 12px 18px;
+  background:var(--card);border:0.5px solid var(--line);
+  border-radius:12px;overflow:hidden;padding-bottom:8px;
+}
+.record-dock .dock-amt{
+  display:flex;align-items:baseline;gap:6px;padding:10px 16px 2px;
+}
+.record-dock .dock-amt .amt-out{font-size:30px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.record-dock .dock-sub{
+  display:flex;justify-content:space-between;gap:8px;
+  padding:0 16px 6px;font-size:12px;color:var(--sub);
+}
+.record-dock .dock-sub b{font-weight:400;color:var(--text)}
+/* 点备注会唤起系统输入法，这时收起自定义数字键盘，避免两个键盘叠在一起。
+   max-height 给足余量（480px）只用于 note-on 收起动画，正常显示不会被裁切。 */
+.record-dock .keypad-wrap{
+  overflow:hidden;max-height:480px;
+  transition:max-height .2s ease,opacity .16s ease;
+}
+.record-dock.note-on .keypad-wrap{max-height:0;opacity:0}
